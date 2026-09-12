@@ -318,6 +318,119 @@ textarea.proj-notes:focus{outline:1px solid var(--accent);}
 .dash-task-item .dti-del{border:none;background:transparent;color:var(--ink-faint);cursor:pointer;font-size:12px;flex-shrink:0;}
 .dash-task-item .dti-del:hover{color:var(--danger);}
 .dash-empty-tasks{color:var(--ink-faint);font-size:12.5px;text-align:center;padding:20px 0;}
+
+/* ---- card extras: value badge, subtask progress, attachment count ---- */
+.card-value{display:inline-flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--pausado);background:rgba(245,166,35,0.12);border:1px solid rgba(245,166,35,0.35);border-radius:20px;padding:2px 8px;}
+.card-meta-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.card-subtask-progress{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-soft);}
+.card-subtask-progress .mini-track{width:44px;height:4px;border-radius:20px;background:var(--input-bg);overflow:hidden;}
+.card-subtask-progress .mini-fill{height:100%;background:var(--accent);}
+.card-attach-count{display:inline-flex;align-items:center;gap:3px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);}
+
+/* ---- task detail modal ---- */
+.modal-overlay{position:fixed;inset:0;background:rgba(4,6,4,0.6);backdrop-filter:blur(2px);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:40px 20px;overflow-y:auto;}
+.modal-overlay.open{display:flex;}
+.task-modal{background:var(--panel);border:1px solid var(--line);border-radius:16px;width:100%;max-width:660px;padding:22px 24px 24px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.45);}
+.tm-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;}
+.tm-title-input{flex:1;background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--ink);font-family:'Inter',sans-serif;font-size:18px;font-weight:700;padding:4px 2px 8px;outline:none;}
+.tm-title-input:focus{border-color:var(--accent);}
+.tm-close{border:none;background:var(--input-bg);color:var(--ink-soft);width:30px;height:30px;border-radius:9px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.tm-close:hover{color:var(--ink);border-color:var(--hover-line);}
+.tm-del{border:1px solid var(--line);background:transparent;color:var(--ink-soft);border-radius:9px;padding:0 12px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;flex-shrink:0;height:30px;}
+.tm-del:hover{border-color:var(--danger);color:var(--danger);}
+
+.tm-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.tm-field{display:flex;flex-direction:column;gap:4px;flex:1;min-width:130px;}
+.tm-field label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.04em;}
+.tm-field input[type=date],.tm-field select,.tm-field input[type=text],.tm-field input[type=number]{border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-family:'Inter',sans-serif;font-size:12.5px;background:var(--input-bg);color:var(--ink);width:100%;}
+.tm-field input[type=date],.tm-field input[type=number]{font-family:'IBM Plex Mono',monospace;}
+.tm-value-wrap{display:flex;align-items:center;gap:6px;}
+.tm-value-wrap span{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+
+.tm-section{margin-bottom:18px;}
+.tm-section-title{font-size:12.5px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;}
+.tm-section-title .tm-sub-count{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:10.5px;color:var(--ink-soft);}
+
+textarea.tm-desc{width:100%;min-height:90px;resize:vertical;border:1px solid var(--line);border-radius:8px;background:var(--input-bg);color:var(--ink);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6;padding:10px;outline:none;}
+textarea.tm-desc:focus{outline:1px solid var(--accent);}
+
+.tm-subtask-progress-track{height:6px;border-radius:20px;background:var(--input-bg);overflow:hidden;margin-bottom:10px;}
+.tm-subtask-progress-fill{height:100%;background:var(--accent);border-radius:20px;transition:width .2s;}
+.tm-subtask-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.tm-subtask-item{display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;}
+.tm-subtask-item input[type=checkbox]{width:15px;height:15px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;}
+.tm-subtask-item .ts-text{flex:1;font-size:12.5px;word-break:break-word;}
+.tm-subtask-item.done .ts-text{text-decoration:line-through;color:var(--ink-faint);}
+.tm-subtask-item .ts-del{border:none;background:transparent;color:var(--ink-faint);cursor:pointer;font-size:12px;flex-shrink:0;}
+.tm-subtask-item .ts-del:hover{color:var(--danger);}
+.tm-subtask-add{display:flex;gap:6px;}
+.tm-subtask-add input{flex:1;border:1px solid var(--line);border-radius:8px;padding:7px 9px;font-family:'Inter',sans-serif;font-size:12.5px;background:var(--input-bg);color:var(--ink);}
+.tm-subtask-empty{color:var(--ink-faint);font-size:12px;padding:6px 0;}
+
+.tm-attach-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.tm-attach-item{display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px;}
+.tm-attach-item svg{flex-shrink:0;color:var(--ink-soft);}
+.tm-attach-item .ta-name{flex:1;font-size:12px;word-break:break-word;}
+.tm-attach-item .ta-size{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);flex-shrink:0;}
+.tm-attach-item .ta-btn{border:none;background:transparent;color:var(--ink-soft);cursor:pointer;font-size:12px;flex-shrink:0;padding:2px 4px;}
+.tm-attach-item .ta-btn:hover{color:var(--accent);}
+.tm-attach-item .ta-del:hover{color:var(--danger);}
+.tm-attach-empty{color:var(--ink-faint);font-size:12px;padding:6px 0 10px;}
+.tm-attach-add-btn{border:1px dashed var(--line);background:transparent;color:var(--ink-soft);border-radius:8px;padding:8px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;width:100%;}
+.tm-attach-add-btn:hover{border-color:var(--accent);color:var(--accent);}
+.tm-attach-note{font-size:10.5px;color:var(--ink-faint);margin-top:6px;}
+
+.tm-footer{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:6px;}
+.tm-status{font-family:'IBM Plex Mono',monospace;font-size:10px;margin-right:auto;}
+.tm-status.saved{color:var(--accent);}
+.tm-status.error{color:var(--danger);}
+
+/* ---- dashboard tab ---- */
+.kpi-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:18px 0 24px;}
+@media (max-width:1100px){.kpi-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:600px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+.kpi-box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;}
+.kpi-box .kpi-label{font-size:10px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
+.kpi-box .kpi-value{font-size:20px;font-weight:700;line-height:1.1;}
+.kpi-box .kpi-value.danger{color:var(--danger);}
+.kpi-box .kpi-value.ok{color:var(--accent);}
+.kpi-box .kpi-value.warn{color:var(--pausado);}
+
+.dash2-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:16px;}
+@media (max-width:920px){.dash2-grid{grid-template-columns:1fr;}}
+.chart-panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;}
+.chart-panel-title{font-size:13px;font-weight:700;margin-bottom:14px;}
+
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.bar-row .bar-label{width:88px;flex-shrink:0;font-size:11.5px;color:var(--ink-soft);display:flex;align-items:center;gap:6px;}
+.bar-row .bar-track{flex:1;height:11px;border-radius:20px;background:var(--input-bg);overflow:hidden;}
+.bar-row .bar-fill{height:100%;border-radius:20px;transition:width .2s;}
+.bar-row .bar-count{width:26px;text-align:right;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-soft);}
+
+.donut-flex{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.donut-ring{width:132px;height:132px;border-radius:50%;flex-shrink:0;position:relative;}
+.donut-ring::after{content:'';position:absolute;inset:20px;border-radius:50%;background:var(--panel);}
+.donut-center{position:absolute;inset:20px;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:2;}
+.donut-center b{font-size:17px;}
+.donut-center span{font-size:9.5px;color:var(--ink-faint);font-family:'IBM Plex Mono',monospace;}
+.donut-legend{display:flex;flex-direction:column;gap:8px;}
+.donut-legend .legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-soft);}
+.donut-legend .legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.donut-legend b{color:var(--ink);}
+
+.fin-list{display:flex;flex-direction:column;gap:8px;}
+.fin-item{display:flex;align-items:center;gap:10px;background:var(--card-bg);border:1px solid var(--line);border-radius:9px;padding:9px 11px;}
+.fin-item .fi-title{flex:1;font-size:12.5px;word-break:break-word;}
+.fin-item .fi-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-faint);}
+.fin-item .fi-value{font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:700;color:var(--pausado);flex-shrink:0;}
+
+.proj-progress-list{display:flex;flex-direction:column;gap:12px;}
+.proj-progress-row .ppr-head{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
+.proj-progress-row .ppr-head b{display:flex;align-items:center;gap:6px;}
+.proj-progress-row .ppr-track{height:8px;border-radius:20px;background:var(--input-bg);overflow:hidden;}
+.proj-progress-row .ppr-fill{height:100%;border-radius:20px;}
+
+.dash-empty-generic{color:var(--ink-faint);font-size:13px;text-align:center;padding:26px 0;}
 </style>
 </head>
 <body>
@@ -337,6 +450,7 @@ textarea.proj-notes:focus{outline:1px solid var(--accent);}
     <div class="tabs">
       <button class="tab-btn active" data-view="tarefas">Tarefas</button>
       <button class="tab-btn" data-view="projetos">Projetos</button>
+      <button class="tab-btn" data-view="dashboard">Dashboards</button>
     </div>
     <div class="header-actions">
       <div class="search">
@@ -381,7 +495,18 @@ textarea.proj-notes:focus{outline:1px solid var(--accent);}
     </div>
     <div id="projectDashboard" style="display:none;"></div>
   </div>
+
+  <!-- ===== DASHBOARDS ===== -->
+  <div class="view" id="view-dashboard">
+    <div id="dashboardWrap"></div>
+  </div>
 </div>
+
+<div class="modal-overlay" id="taskModalOverlay">
+  <div class="task-modal" id="taskModalBox"></div>
+</div>
+
+<input type="file" id="attachFileInput" style="display:none;">
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
@@ -392,7 +517,7 @@ const SUPABASE_URL = 'https://rosaqjfodcknlerrtkwz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJvc2FxamZvZGNrbmxlcnJ0a3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5ODM4ODYsImV4cCI6MjEwMjU1OTg4Nn0.skvJsYOEifM_TQr0i7fDEA3cKSeEoc105bIq_PNIjbs';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Adaptador com a mesma "forma" do window.storage original (get/set
+// Adaptador com a mesma "forma" do window.storage original (get/set/delete
 // retornando {key, value} ou lançando erro), para que o resto do app
 // não precise mudar a lógica de retry/estado de erro.
 const storage = {
@@ -415,6 +540,11 @@ const storage = {
       .upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' });
     if(error) throw error;
     return { key, value };
+  },
+  async delete(key){
+    const { error } = await sb.from('kanban_state').delete().eq('key', key);
+    if(error) throw error;
+    return { key, deleted:true };
   }
 };
 
@@ -449,6 +579,27 @@ function tagHexOf(tagId){
   return tagId==='victor' ? '#5B8DEF' : tagId==='bia' ? '#EC5C97' : '#2FE6A6';
 }
 function colOf(colId){ return COLUMNS.find(c=>c.id===colId) || COLUMNS[0]; }
+function formatBRL(v){
+  const n = Number(v)||0;
+  return 'R$ ' + n.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function formatFileSize(bytes){
+  if(!bytes && bytes!==0) return '';
+  if(bytes < 1024) return bytes + ' B';
+  if(bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/(1024*1024)).toFixed(1) + ' MB';
+}
+function subtaskProgress(t){
+  const subs = t.subtasks || [];
+  if(subs.length===0) return null;
+  const done = subs.filter(s=>s.done).length;
+  return {done, total: subs.length, pct: Math.round((done/subs.length)*100)};
+}
+function setTaskCol(t, newCol){
+  if(newCol==='concluido' && t.col!=='concluido') t.completedAt = Date.now();
+  if(newCol!=='concluido') t.completedAt = null;
+  t.col = newCol;
+}
 function projectOf(id){ return state.projects.find(p=>p.id===id) || null; }
 function tasksOfProject(id){ return state.tasks.filter(t=>t.projectId===id); }
 function projectProgress(id){
@@ -458,21 +609,40 @@ function projectProgress(id){
   return Math.round((done/tasks.length)*100);
 }
 
+const _projTeste = cid();
+const _projMudanca = cid();
+const _projEnxoval = cid();
+
 let state = {
   tasks: [
-    {id:cid(), title:'Solicitar acesso ao servidor de staging', tag:'victor', col:'backlog', deadline:'', projectId:null},
-    {id:cid(), title:'Revisar solicitação de acesso da Bia', tag:'dois', col:'iniciado', deadline:'', projectId:null}
+    {id:cid(), title:'Fechar marceneiro', tag:'victor', col:'backlog', deadline:'2026-09-12', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null},
+    {id:cid(), title:'Venda dos eletrodomésticos', tag:'dois', col:'backlog', deadline:'2026-10-10', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null},
+    {id:cid(), title:'Tirar ar condicionado', tag:'victor', col:'backlog', deadline:'2026-09-12', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null},
+    {id:cid(), title:'Organizar caixinhas dos gatos p/ viagem', tag:'dois', col:'backlog', deadline:'2026-09-13', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null},
+    {id:cid(), title:'Escolher carrinho + bebê conforto', tag:'victor', col:'backlog', deadline:'2026-10-15', projectId:_projEnxoval, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null},
+    {id:cid(), title:'Revisar solicitação de acesso da Bia', tag:'dois', col:'iniciado', deadline:'', projectId:null, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null},
+    {id:cid(), title:'Fechar pintores', tag:'victor', col:'concluido', deadline:'2026-09-10', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:Date.now()},
+    {id:cid(), title:'Comprar materiais para reparos no apto', tag:'victor', col:'concluido', deadline:'2026-09-12', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:Date.now()},
+    {id:cid(), title:'Vacina dos gatos para viagem', tag:'bia', col:'concluido', deadline:'2026-08-18', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:Date.now()},
+    {id:cid(), title:'Comprar remédio manipulado gatos', tag:'bia', col:'concluido', deadline:'2026-09-13', projectId:_projMudanca, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:Date.now()}
   ],
-  projects: []
+  projects: [
+    {id:_projTeste, name:'Teste', notes:'', deadline:'2026-08-18', color:'#8B6BF0', createdAt:Date.now()},
+    {id:_projMudanca, name:'Mudança Fortaleza', notes:'', deadline:'2026-10-10', color:'#3E9BF5', createdAt:Date.now()},
+    {id:_projEnxoval, name:'Enxoval Olívia', notes:'', deadline:'2026-11-30', color:'#F5A623', createdAt:Date.now()}
+  ]
 };
 
 let searchTerm = '';
 let currentProjectId = null;
 
 let dataLoadedOk = false;
+let loadAttemptToken = 0;
 
 async function loadState(){
+  const myToken = ++loadAttemptToken;
   const ok = await tryLoadOnce();
+  if(myToken !== loadAttemptToken) return; // uma chamada mais nova já assumiu; ignora este resultado obsoleto
   if(ok){
     dataLoadedOk = true;
     showLoadError(false);
@@ -487,6 +657,12 @@ async function loadState(){
   state.tasks.forEach(t=>{
     if(t.deadline===undefined) t.deadline = t.date || '';
     if(t.projectId===undefined) t.projectId = null;
+    if(t.description===undefined) t.description = '';
+    if(!Array.isArray(t.subtasks)) t.subtasks = [];
+    if(!Array.isArray(t.attachments)) t.attachments = [];
+    if(t.value===undefined) t.value = null;
+    if(t.createdAt===undefined) t.createdAt = null;
+    if(t.completedAt===undefined) t.completedAt = null;
   });
   render();
   renderProjectsTab();
@@ -503,8 +679,9 @@ async function tryLoadOnce(){
       }
       return true;
     }catch(e){
-      // pode ser "chave ainda não existe" (usuário novo) ou uma falha real de rede/servidor.
-      // como não dá pra diferenciar com certeza, tentamos algumas vezes antes de desistir.
+      // pode ser "chave ainda não existe" (quadro novo) ou uma falha real de
+      // rede/servidor. como não dá pra diferenciar com certeza, tentamos
+      // algumas vezes antes de desistir.
       if(attempt<maxRetries){
         await new Promise(r=>setTimeout(r, 400 * Math.pow(2, attempt)));
       } else {
@@ -618,7 +795,7 @@ function render(){
       cardsEl.classList.remove('dragover');
       const id = e.dataTransfer.getData('text/plain');
       const task = state.tasks.find(t=>t.id===id);
-      if(task){ task.col = col.id; saveState(); render(); renderProjectsTab(); }
+      if(task){ setTaskCol(task, col.id); saveState(); render(); renderProjectsTab(); }
     });
 
     colEl.querySelector('.add-toggle').addEventListener('click', ()=> showAddForm(colEl, col.id));
@@ -627,6 +804,7 @@ function render(){
   document.getElementById('totalCount').textContent = totalVisible;
   renderOverdueBanner();
   renderCalendar();
+  renderDashboardTab();
 }
 
 function renderOverdueBanner(){
@@ -667,6 +845,7 @@ function buildCard(t){
     </div>
     <button class="card-del" title="Excluir">✕</button>
     <div class="card-title"></div>
+    <div class="card-meta-row"></div>
     <div class="project-chip-wrap">
       <button type="button" class="project-chip${proj ? ' has-project' : ''}">
         ${proj ? `<span class="p-dot" style="background:${proj.color}"></span>${escapeHtml(proj.name)}` : 'Sem projeto'}
@@ -691,13 +870,33 @@ function buildCard(t){
   `;
   el.querySelector('.card-title').textContent = t.title;
 
+  const metaRow = el.querySelector('.card-meta-row');
+  const metaBits = [];
+  if(t.value!==null && t.value!==undefined && t.value!==0){
+    metaBits.push(`<span class="card-value">R$ ${Number(t.value).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}</span>`);
+  }
+  const sp = subtaskProgress(t);
+  if(sp){
+    metaBits.push(`<span class="card-subtask-progress"><span class="mini-track"><span class="mini-fill" style="width:${sp.pct}%"></span></span>${sp.done}/${sp.total}</span>`);
+  }
+  if((t.attachments||[]).length>0){
+    metaBits.push(`<span class="card-attach-count"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>${t.attachments.length}</span>`);
+  }
+  metaRow.innerHTML = metaBits.join('');
+  if(metaBits.length===0) metaRow.style.display='none';
+
   el.addEventListener('dragstart', e=>{
     e.dataTransfer.setData('text/plain', t.id);
     setTimeout(()=> el.classList.add('dragging'), 0);
   });
   el.addEventListener('dragend', ()=> el.classList.remove('dragging'));
 
-  el.querySelector('.card-del').addEventListener('click', ()=>{
+  el.addEventListener('click', ()=>{
+    openTaskModal(t.id);
+  });
+
+  el.querySelector('.card-del').addEventListener('click', e=>{
+    e.stopPropagation();
     state.tasks = state.tasks.filter(x=>x.id!==t.id);
     saveState(); render(); renderProjectsTab();
   });
@@ -714,7 +913,7 @@ function buildCard(t){
   stageMenu.querySelectorAll('.dropdown-item:not(.current)').forEach(item=>{
     item.addEventListener('click', e=>{
       e.stopPropagation();
-      t.col = item.dataset.col;
+      setTaskCol(t, item.dataset.col);
       saveState(); render(); renderProjectsTab();
     });
   });
@@ -785,7 +984,9 @@ function showAddForm(colEl, colId){
     if(!title) return;
     const dateVal = form.querySelector('input[type=date]').value;
     const projVal = form.querySelector('.proj-select').value || null;
-    state.tasks.push({id:cid(), title, tag:selectedTag, col:colId, deadline:dateVal, projectId:projVal});
+    const newTask = {id:cid(), title, tag:selectedTag, col:colId, deadline:dateVal, projectId:projVal, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null};
+    if(colId==='concluido') newTask.completedAt = Date.now();
+    state.tasks.push(newTask);
     saveState();
     render();
     renderProjectsTab();
@@ -1111,7 +1312,7 @@ function renderProjectDashboard(projId){
     if(!title) return;
     const tag = document.getElementById('dtTag').value;
     const deadline = document.getElementById('dtDeadline').value;
-    state.tasks.push({id:cid(), title, tag, col:'backlog', deadline, projectId:p.id});
+    state.tasks.push({id:cid(), title, tag, col:'backlog', deadline, projectId:p.id, description:'', subtasks:[], attachments:[], value:null, createdAt:Date.now(), completedAt:null});
     saveState();
     render();
     renderProjectDashboard(p.id);
@@ -1144,7 +1345,10 @@ function renderDashTaskList(projId){
       ${overdue ? `<span class="badge-overdue">atrasado</span>` : ''}
       <button class="dti-del" title="Excluir">✕</button>
     `;
-    item.querySelector('.dti-del').addEventListener('click', ()=>{
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', ()=> openTaskModal(t.id));
+    item.querySelector('.dti-del').addEventListener('click', e=>{
+      e.stopPropagation();
       state.tasks = state.tasks.filter(x=>x.id!==t.id);
       saveState(); render(); renderProjectDashboard(projId);
     });
@@ -1154,6 +1358,436 @@ function renderDashTaskList(projId){
 
 function renderProjectsGridSilently(){
   if(!currentProjectId) renderProjectsGrid();
+}
+
+/* =========================================================
+   MODAL DE DETALHES DA TAREFA
+   ========================================================= */
+let currentModalTaskId = null;
+
+function openTaskModal(taskId){
+  currentModalTaskId = taskId;
+  renderTaskModal();
+  document.getElementById('taskModalOverlay').classList.add('open');
+}
+function closeTaskModal(){
+  currentModalTaskId = null;
+  document.getElementById('taskModalOverlay').classList.remove('open');
+  render();
+  renderProjectsTab();
+}
+document.getElementById('taskModalOverlay').addEventListener('click', e=>{
+  if(e.target.id === 'taskModalOverlay') closeTaskModal();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape' && document.getElementById('taskModalOverlay').classList.contains('open')) closeTaskModal();
+});
+
+function tmSetStatus(kind, msg){
+  const el = document.getElementById('tmStatus');
+  if(!el) return;
+  el.className = 'tm-status' + (kind ? ' '+kind : '');
+  el.textContent = msg || '';
+}
+
+function renderTaskModal(){
+  const box = document.getElementById('taskModalBox');
+  const t = state.tasks.find(x=>x.id===currentModalTaskId);
+  if(!t){ closeTaskModal(); return; }
+
+  const sp = subtaskProgress(t);
+
+  box.innerHTML = `
+    <div class="tm-head">
+      <input type="text" class="tm-title-input" id="tmTitle" maxlength="140">
+      <button class="tm-del" id="tmDelete" title="Excluir tarefa">Excluir</button>
+      <button class="tm-close" id="tmClose" title="Fechar">✕</button>
+    </div>
+
+    <div class="tm-row">
+      <div class="tm-field">
+        <label>Responsável</label>
+        <div class="tag-toggle" id="tmTagToggle">
+          ${TAGS.map(g=>`<button type="button" class="tag-chip${g.id===t.tag?' selected':''}" data-tag="${g.id}">${g.label}</button>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div class="tm-row">
+      <div class="tm-field">
+        <label>Projeto</label>
+        <select id="tmProject">
+          <option value="">Sem projeto</option>
+          ${state.projects.map(p=>`<option value="${p.id}"${p.id===t.projectId?' selected':''}>${escapeHtml(p.name)}</option>`).join('')}
+        </select>
+      </div>
+      <div class="tm-field">
+        <label>Prazo</label>
+        <input type="date" id="tmDeadline" value="${t.deadline||''}">
+      </div>
+      <div class="tm-field">
+        <label>Valor (R$)</label>
+        <input type="number" id="tmValue" step="0.01" min="0" placeholder="0,00" value="${t.value!==null && t.value!==undefined ? t.value : ''}">
+      </div>
+    </div>
+
+    <div class="tm-section">
+      <div class="tm-section-title">Descrição</div>
+      <textarea class="tm-desc" id="tmDesc" placeholder="Descreva os detalhes desta tarefa...">${escapeHtml(t.description||'')}</textarea>
+    </div>
+
+    <div class="tm-section">
+      <div class="tm-section-title">Subtarefas <span class="tm-sub-count">${sp ? sp.done+'/'+sp.total : '0/0'}</span></div>
+      ${sp ? `<div class="tm-subtask-progress-track"><div class="tm-subtask-progress-fill" style="width:${sp.pct}%"></div></div>` : ''}
+      <div class="tm-subtask-list" id="tmSubtaskList"></div>
+      <div class="tm-subtask-add">
+        <input type="text" id="tmNewSubtask" placeholder="Adicionar subtarefa..." maxlength="140">
+        <button class="add-submit" id="tmAddSubtask" style="flex:none;padding:8px 14px;">+</button>
+      </div>
+    </div>
+
+    <div class="tm-section">
+      <div class="tm-section-title">Anexos</div>
+      <div class="tm-attach-list" id="tmAttachList"></div>
+      <button type="button" class="tm-attach-add-btn" id="tmAttachAdd">+ anexar arquivo</button>
+      <div class="tm-attach-note">Arquivos de até ~3 MB. Ficam salvos junto com o quadro.</div>
+    </div>
+
+    <div class="tm-footer">
+      <div class="tm-status" id="tmStatus"></div>
+      <button class="tm-save" id="tmSave" style="background:var(--accent);color:var(--accent-ink);border:none;font-weight:600;padding:9px 18px;border-radius:8px;cursor:pointer;">Salvar</button>
+      <button class="add-cancel" id="tmCloseBtn">Fechar</button>
+    </div>
+  `;
+
+  // título
+  const titleInput = document.getElementById('tmTitle');
+  titleInput.value = t.title;
+  titleInput.addEventListener('blur', ()=>{
+    const v = titleInput.value.trim();
+    if(v && v!==t.title){ t.title = v; saveState(); render(); renderProjectsTab(); }
+    else titleInput.value = t.title;
+  });
+  titleInput.addEventListener('keydown', e=>{ if(e.key==='Enter') titleInput.blur(); });
+
+  // tag
+  document.querySelectorAll('#tmTagToggle .tag-chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      t.tag = chip.dataset.tag;
+      document.querySelectorAll('#tmTagToggle .tag-chip').forEach(c=>c.classList.remove('selected'));
+      chip.classList.add('selected');
+      saveState(); render(); renderProjectsTab();
+    });
+  });
+
+  // projeto
+  document.getElementById('tmProject').addEventListener('change', e=>{
+    t.projectId = e.target.value || null;
+    saveState(); render(); renderProjectsTab();
+  });
+
+  // prazo
+  document.getElementById('tmDeadline').addEventListener('change', e=>{
+    t.deadline = e.target.value;
+    saveState(); render(); renderProjectsTab();
+  });
+
+  // valor
+  document.getElementById('tmValue').addEventListener('change', e=>{
+    const v = parseFloat(e.target.value);
+    t.value = isNaN(v) ? null : v;
+    saveState(); render(); renderProjectsTab();
+  });
+
+  // descrição
+  const descArea = document.getElementById('tmDesc');
+  descArea.addEventListener('blur', ()=>{
+    if(descArea.value !== (t.description||'')){
+      t.description = descArea.value;
+      saveState();
+      tmSetStatus('saved','Salvo');
+      setTimeout(()=>tmSetStatus('',''), 1500);
+    }
+  });
+
+  // fechar / excluir
+  document.getElementById('tmClose').addEventListener('click', closeTaskModal);
+  document.getElementById('tmCloseBtn').addEventListener('click', closeTaskModal);
+
+  // salvar explícito: garante que tudo que está nos campos (mesmo sem ter
+  // perdido o foco ainda) seja commitado no objeto da tarefa e persistido
+  document.getElementById('tmSave').addEventListener('click', async ()=>{
+    const titleV = titleInput.value.trim();
+    if(titleV) t.title = titleV; else titleInput.value = t.title;
+
+    t.description = descArea.value;
+
+    const deadlineEl = document.getElementById('tmDeadline');
+    t.deadline = deadlineEl.value;
+
+    const valueEl = document.getElementById('tmValue');
+    const vNum = parseFloat(valueEl.value);
+    t.value = isNaN(vNum) ? null : vNum;
+
+    const projectEl = document.getElementById('tmProject');
+    t.projectId = projectEl.value || null;
+
+    const newSubInput = document.getElementById('tmNewSubtask');
+    if(newSubInput && newSubInput.value.trim()) addSubtask();
+
+    saveState();
+    render();
+    renderProjectsTab();
+    tmSetStatus('saved','Salvo');
+    setTimeout(()=>tmSetStatus('',''), 1500);
+  });
+
+  document.getElementById('tmDelete').addEventListener('click', ()=>{
+    state.tasks = state.tasks.filter(x=>x.id!==t.id);
+    saveState();
+    closeTaskModal();
+    render(); renderProjectsTab();
+  });
+
+  renderTmSubtasks(t);
+  renderTmAttachments(t);
+
+  // subtarefas: adicionar
+  function addSubtask(){
+    const input = document.getElementById('tmNewSubtask');
+    const v = input.value.trim();
+    if(!v) return;
+    t.subtasks.push({id:cid(), title:v, done:false});
+    input.value = '';
+    saveState();
+    renderTaskModal();
+    render();
+  }
+  document.getElementById('tmAddSubtask').addEventListener('click', addSubtask);
+  document.getElementById('tmNewSubtask').addEventListener('keydown', e=>{ if(e.key==='Enter') addSubtask(); });
+
+  // anexos: adicionar
+  document.getElementById('tmAttachAdd').addEventListener('click', ()=>{
+    const fileInput = document.getElementById('attachFileInput');
+    fileInput.value = '';
+    fileInput.onchange = ()=> handleAttachFile(fileInput.files[0], t);
+    fileInput.click();
+  });
+}
+
+function renderTmSubtasks(t){
+  const listEl = document.getElementById('tmSubtaskList');
+  if(!listEl) return;
+  if(!t.subtasks || t.subtasks.length===0){
+    listEl.innerHTML = '<div class="tm-subtask-empty">Nenhuma subtarefa ainda.</div>';
+    return;
+  }
+  listEl.innerHTML = '';
+  t.subtasks.forEach(s=>{
+    const row = document.createElement('div');
+    row.className = 'tm-subtask-item' + (s.done ? ' done' : '');
+    row.innerHTML = `
+      <input type="checkbox" ${s.done?'checked':''}>
+      <div class="ts-text">${escapeHtml(s.title)}</div>
+      <button class="ts-del" title="Remover">✕</button>
+    `;
+    row.querySelector('input[type=checkbox]').addEventListener('change', e=>{
+      s.done = e.target.checked;
+      saveState();
+      renderTaskModal();
+      render();
+    });
+    row.querySelector('.ts-del').addEventListener('click', ()=>{
+      t.subtasks = t.subtasks.filter(x=>x.id!==s.id);
+      saveState();
+      renderTaskModal();
+      render();
+    });
+    listEl.appendChild(row);
+  });
+}
+
+function renderTmAttachments(t){
+  const listEl = document.getElementById('tmAttachList');
+  if(!listEl) return;
+  if(!t.attachments || t.attachments.length===0){
+    listEl.innerHTML = '<div class="tm-attach-empty">Nenhum arquivo anexado.</div>';
+    return;
+  }
+  listEl.innerHTML = '';
+  t.attachments.forEach(a=>{
+    const row = document.createElement('div');
+    row.className = 'tm-attach-item';
+    row.innerHTML = `
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+      <div class="ta-name">${escapeHtml(a.name)}</div>
+      <div class="ta-size">${formatFileSize(a.size)}</div>
+      <button class="ta-btn ta-dl" title="Baixar">⬇</button>
+      <button class="ta-btn ta-del" title="Remover">✕</button>
+    `;
+    row.querySelector('.ta-dl').addEventListener('click', async ()=>{
+      try{
+        const res = await storage.get('attach:'+a.id);
+        if(res && res.value){
+          const link = document.createElement('a');
+          link.href = res.value;
+          link.download = a.name;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+        }
+      }catch(e){ alert('Não foi possível recuperar este arquivo.'); }
+    });
+    row.querySelector('.ta-del').addEventListener('click', async ()=>{
+      t.attachments = t.attachments.filter(x=>x.id!==a.id);
+      saveState();
+      renderTmAttachments(t);
+      render();
+      try{ await storage.delete('attach:'+a.id); }catch(e){ /* ok */ }
+    });
+    listEl.appendChild(row);
+  });
+}
+
+function handleAttachFile(file, t){
+  if(!file) return;
+  const MAX_BYTES = 3 * 1024 * 1024;
+  if(file.size > MAX_BYTES){
+    alert('Arquivo muito grande. O limite é de aproximadamente 3 MB.');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = async ()=>{
+    const dataUrl = reader.result;
+    const attachId = cid();
+    try{
+      const ok = await storage.set('attach:'+attachId, dataUrl);
+      if(!ok){ alert('Não foi possível salvar o arquivo.'); return; }
+      t.attachments.push({id:attachId, name:file.name, size:file.size, type:file.type});
+      saveState();
+      renderTmAttachments(t);
+      render();
+    }catch(e){
+      alert('Não foi possível salvar o arquivo.');
+    }
+  };
+  reader.onerror = ()=> alert('Não foi possível ler o arquivo.');
+  reader.readAsDataURL(file);
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+function renderDashboardTab(){
+  const wrap = document.getElementById('dashboardWrap');
+  if(!wrap) return;
+
+  const tasks = state.tasks;
+  const total = tasks.length;
+
+  if(total===0){
+    wrap.innerHTML = '<div class="dash-empty-generic">Ainda não há tarefas para gerar estatísticas. Crie alguns cards na aba Tarefas.</div>';
+    return;
+  }
+
+  const doneTasks = tasks.filter(t=>t.col==='concluido');
+  const overdueTasks = tasks.filter(isTaskOverdue);
+  const pctDone = Math.round((doneTasks.length/total)*100);
+
+  const openValueTasks = tasks.filter(t=>t.value && t.col!=='concluido' && t.col!=='cancelado');
+  const totalOpenValue = openValueTasks.reduce((s,t)=>s+Number(t.value||0),0);
+  const totalAllValue = tasks.reduce((s,t)=>s+Number(t.value||0),0);
+
+  let subtasksTotal=0, subtasksDone=0;
+  tasks.forEach(t=>{ (t.subtasks||[]).forEach(s=>{ subtasksTotal++; if(s.done) subtasksDone++; }); });
+  const attachmentsTotal = tasks.reduce((s,t)=> s + (t.attachments||[]).length, 0);
+
+  // distribuição por coluna
+  const colCounts = COLUMNS.map(c=>({...c, count: tasks.filter(t=>t.col===c.id).length}));
+  const maxColCount = Math.max(1, ...colCounts.map(c=>c.count));
+
+  // distribuição por tag (donut via conic-gradient)
+  const tagCounts = TAGS.map(g=>({...g, count: tasks.filter(t=>t.tag===g.id).length, hex: tagHexOf(g.id)}));
+  let acc = 0;
+  const gradientParts = [];
+  tagCounts.forEach(g=>{
+    const slice = total ? (g.count/total)*360 : 0;
+    if(g.count>0) gradientParts.push(`${g.hex} ${acc}deg ${acc+slice}deg`);
+    acc += slice;
+  });
+  const donutGradient = gradientParts.length ? `conic-gradient(${gradientParts.join(',')})` : 'var(--input-bg)';
+
+  // progresso por projeto (top 6 por nº de tarefas)
+  const projRows = state.projects
+    .map(p=>({p, pct: projectProgress(p.id), count: tasksOfProject(p.id).length}))
+    .sort((a,b)=> b.count - a.count)
+    .slice(0,6);
+
+  // top 5 tarefas por valor
+  const topValueTasks = tasks.filter(t=>t.value).sort((a,b)=> b.value - a.value).slice(0,5);
+
+  wrap.innerHTML = `
+    <div class="kpi-grid">
+      <div class="kpi-box"><div class="kpi-label">Total de tarefas</div><div class="kpi-value">${total}</div></div>
+      <div class="kpi-box"><div class="kpi-label">Concluídas</div><div class="kpi-value ok">${pctDone}%</div></div>
+      <div class="kpi-box"><div class="kpi-label">Atrasadas</div><div class="kpi-value${overdueTasks.length?' danger':''}">${overdueTasks.length}</div></div>
+      <div class="kpi-box"><div class="kpi-label">Valor em aberto</div><div class="kpi-value warn">${formatBRL(totalOpenValue)}</div></div>
+      <div class="kpi-box"><div class="kpi-label">Subtarefas feitas</div><div class="kpi-value">${subtasksDone}/${subtasksTotal}</div></div>
+      <div class="kpi-box"><div class="kpi-label">Anexos</div><div class="kpi-value">${attachmentsTotal}</div></div>
+    </div>
+
+    <div class="dash2-grid">
+      <div class="chart-panel">
+        <div class="chart-panel-title">Tarefas por etapa</div>
+        ${colCounts.map(c=>`
+          <div class="bar-row">
+            <div class="bar-label"><span class="dot" style="background:${c.color};width:7px;height:7px;border-radius:50%;display:inline-block;"></span>${c.label}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${(c.count/maxColCount)*100}%;background:${c.color};"></div></div>
+            <div class="bar-count">${c.count}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="chart-panel">
+        <div class="chart-panel-title">Distribuição por responsável</div>
+        <div class="donut-flex">
+          <div class="donut-ring" style="background:${donutGradient};">
+            <div class="donut-center"><b>${total}</b><span>tarefas</span></div>
+          </div>
+          <div class="donut-legend">
+            ${tagCounts.map(g=>`<div class="legend-item"><span class="legend-dot" style="background:${g.hex}"></span>${g.label}: <b>${g.count}</b></div>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash2-grid">
+      <div class="chart-panel">
+        <div class="chart-panel-title">Progresso por projeto</div>
+        <div class="proj-progress-list">
+          ${projRows.length ? projRows.map(r=>`
+            <div class="proj-progress-row">
+              <div class="ppr-head"><b><span class="dot" style="background:${r.p.color};width:7px;height:7px;border-radius:50%;display:inline-block;"></span>${escapeHtml(r.p.name)}</b><span>${r.pct}%</span></div>
+              <div class="ppr-track"><div class="ppr-fill" style="width:${r.pct}%;background:${r.p.color};"></div></div>
+            </div>
+          `).join('') : '<div class="dash-empty-generic" style="padding:10px 0;">Nenhum projeto criado ainda.</div>'}
+        </div>
+      </div>
+
+      <div class="chart-panel">
+        <div class="chart-panel-title">Maiores valores em tarefas</div>
+        <div class="fin-list">
+          ${topValueTasks.length ? topValueTasks.map(t=>`
+            <div class="fin-item">
+              <div class="fi-title">${escapeHtml(t.title)}<div class="fi-meta">${colOf(t.col).label}${t.deadline ? ' · '+formatDateBR(t.deadline):''}</div></div>
+              <div class="fi-value">${formatBRL(t.value)}</div>
+            </div>
+          `).join('') : '<div class="dash-empty-generic" style="padding:10px 0;">Nenhuma tarefa com valor financeiro ainda.</div>'}
+          ${topValueTasks.length ? `<div class="tm-attach-note" style="margin-top:2px;">Soma de todas as tarefas com valor: <b style="color:var(--ink);">${formatBRL(totalAllValue)}</b></div>` : ''}
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 /* ---------- TABS ---------- */
@@ -1209,4 +1843,3 @@ window.addEventListener('beforeunload', e=>{
 </script>
 </body>
 </html>
-<!-- redeploy 08/17/2026 20:56:39 -->
